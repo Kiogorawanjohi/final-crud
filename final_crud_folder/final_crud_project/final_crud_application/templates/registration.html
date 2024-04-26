@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>registration.html</title>
+</head>
+<body>
+<table>
+  <thead>
+   <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Phone</th>
+    <th>County</th>
+  </tr>
+  </thead>
+  <tbody>                                  #where do i put action?????
+    {% for odoz in objects %}
+    <tr>
+      <td>{{objects.Name}}</td>
+      <td>{{objects.Email}}</td>
+      <td>{{objects.Phone}}</td>
+      <td>{{objects.County}}</td>
+      <td>
+          <a href="{% url 'editvoter' object.pk %}">edit</a>
+          <a href="{% url 'deletevoter' object.pk %}">remove</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<form method="post">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>
