@@ -22,14 +22,14 @@ def home(request):
     return render(request, 'home.html')
 
 
-def deletevoter(request,id):
-    object=Registration.objects.get(id=id)
+def deletevoter(request,pk):
+    object=Registration.objects.get(id=pk)
     object.delete()
     return redirect('/viewvoters')
 
 
-def editvoter(request,id):
-    object=Registration.objects.get(id=id)
+def editvoter(request,pk):
+    object=Registration.objects.get(id=pk)
     form = RegistrationForm(request.POST, instance=object)
     if form.is_valid():
         form.save()
