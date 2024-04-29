@@ -88,8 +88,9 @@
               <td>{{ object.Phone }}</td>
               <td>{{ object.County }}</td>
               <td>
-                  <a href="{% url 'editvoter'{%object.id%}%}" class="button-link">Edit</a> <!-- Styled edit link as a button -->
-                  <a href="{% url 'deletevoter'{% object.id %}%}" class="button-link">Delete</a> <!-- Styled delete link as a button -->
+                  <a href="{% url 'editvoter' object.id %}" class="button-link">Edit</a>
+                  <a href="{% url 'deletevoter' object.id %}" class="button-link">Delete</a>
+
               </td>
             </tr>
             {% endfor %}
@@ -97,7 +98,7 @@
         </table>
     </div>
     <div class="form-container">
-        <form method="post" style="border: 1px solid #ccc; padding: 10px;">
+        <form method="post" style="border: 1px solid #ccc; padding: 10px;" action="/addvoter/">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: #001f3f; /* Dark navy blue background */
+            color: white;
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height of the viewport */
+            margin: 0; /* Remove default body margin */
+        }
+        .container {
+            padding: 4%;
+            width: 46%;
+            background-color: #37474f; /* Darker background for the form */
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* White shadow */
+        }
+        .bg-dark {
+            background-color: #001f3f; /* Dark navy blue background */
+            color: white;
+            padding: 1% 0;
+            margin-bottom: 2%;
+            border-radius: 10px; /* Rounded corners */
+            text-align: center; /* Center align the text */
+        }
+        .form-label {
+            color: #fff; /* Bright white label color */
+            font-weight: bold; /* Bold font weight */
+        }
+        .form-control {
+            background-color: #f0f0f0; /* Light gray input background */
+            color: #001f3f; /* Dark navy blue input text color */
+            border: 1px solid #ddd; /* Light gray border */
+            border-radius: 5px; /* Rounded corners */
+            width: 100%; /* Set input width to 100% */
+            margin-bottom: 10px; /* Add margin bottom for spacing */
+            padding: 8px; /* Add padding for spacing */
+            box-sizing: border-box; /* Include padding in the width */
+        }
+        .form-control::placeholder {
+            color: #bbb; /* Light gray placeholder text color */
+        }
+        .btn-primary-container {
+            text-align: center; /* Center align the button */
+        }
+        .btn-primary {
+            background-color: #001f3f; /* Dark navy blue button color */
+            border-color: #001f3f; /* Dark navy blue button border color */
+            color: white;
+            border-radius: 5px; /* Rounded corners */
+            transition: background-color 0.3s; /* Smooth transition on hover */
+        }
+        .btn-primary:hover {
+            background-color: #003366; /* Darker blue color on hover */
+            border-color: #003366; /* Darker blue border color on hover */
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+      <u><h3 class="bg-dark text-white p-1 text-center">Update Voter Details </h3></u>
+
+          <form method="POST" action="{% url 'updatevoter' %}{{ context.id }}" style="padding:10px;" >
+              {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" name="studname" value="{{ context.Name }}" id="name" placeholder="Enter your name" required>
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="studmail" value="{{ context.Email }}" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" name="studage" value="{{ context.Phone }}" id="age" placeholder="Enter your age" required>
+            </div>
+            <div class="mb-3">
+              <label for="national_id" class="form-label">National ID</label>
+              <input type="number" class="form-control" name="studnationalid" value="{{ context.National_ID }}" id="national_id" placeholder="Enter your national ID" required>
+            </div>
+            <div class="mb-3">
+              <label for="county" class="form-label">County</label>
+              <input type="text" class="form-control" name="studcounty" value="{{ context.County }}" id="county" placeholder="Enter your county" required>
+            </div>
+            <div class="btn-primary-container">
+                <button type="submit" class="btn btn-primary m-1">Update</button>
+            </div>
+          </form>
+    </div>
+</body>
+</html>
